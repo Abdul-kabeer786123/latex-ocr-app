@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image to LaTeX Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 60px auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h2 {
+            color: #c0392b;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #a93226;
+        }
+
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .latex-box {
+            background: #fef6f6;
+            border-left: 5px solid #c0392b;
+            padding: 15px;
+            margin-top: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            color: #333;
+            text-align: left;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📐 Image to LaTeX Converter</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br><br>
+            <input type="submit" value="Convert">
+        </form>
+
+        {% if image_path %}
+            <h3>📷 Uploaded Image:</h3>
+            <img src="{{ image_path }}">
+        {% endif %}
+
+        {% if latex_code %}
+            <h3>🧠 Predicted LaTeX Code:</h3>
+            <div class="latex-box">{{ latex_code }}</div>
+        {% endif %}
+    </div>
+
+    <footer>
+        Made with ❤️ using Flask and Pix2Tex
+    </footer>
+</body>
+</html>
