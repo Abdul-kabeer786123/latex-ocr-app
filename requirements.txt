@@ -1,2 +1,5 @@
-myst_parser
+flask
+pillow
+pix2tex[cli]
 torch>=1.7.1
+myst_parser
